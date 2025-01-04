@@ -1,2 +1,2 @@
 # Kharagpur-Hackathon
-This repository consists of proprietory code written for kharagpur hackathon
+This repository consists of proprietory code written for Kharagpur Hackathon

@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
 from sentence_transformers import SentenceTransformer
 from transformers import pipeline
 import faiss
@@ -33,10 +34,14 @@ def rag_pipeline(query):
     response = generator(prompt, max_length=100)
     return response[0]["generated_text"]
 
+# Define input schema using Pydantic
+class Query(BaseModel):
+    query: str
+
 # Step 4: Set up FastAPI
 app = FastAPI()
 
 @app.post("/rag")
-def run_rag(query: str):
-    response = rag_pipeline(query)
-    return {"query": query, "response": response}
+def run_rag(query: Query):
+    response = rag_pipeline(query.query)
+    return {"query": query.query, "response": response}

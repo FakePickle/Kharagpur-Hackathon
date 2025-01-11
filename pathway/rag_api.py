@@ -28,6 +28,10 @@ def rag_pipeline(query):
     D, I = index.search(np.array([query_embedding]), k=3)
     retrieved_docs = [corpus[i] for i in I[0]]
     
+    # Debugging: Print retrieved documents and distances
+    print(f"Retrieved Documents: {retrieved_docs}")
+    print(f"Distances: {D[0]}")
+
     # Generate response
     context = " ".join(retrieved_docs)
     prompt = f"Based on the following documents: {context}. Answer the question: {query}"

@@ -170,3 +170,8 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Project specific files
+Code/data/
+Code/Cache/
+pathway/myenv/
